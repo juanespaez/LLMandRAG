@@ -1,0 +1,82 @@
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+wheels/
+*.whl
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env_backup/
+ENV/
+env.bak/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data & model files
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.onnx
+data/
+datasets/
+models/
+checkpoints/
+
+# Vector stores / indexes
+chroma/
+faiss_index/
+*.index
+*.faiss
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Misc
+*.tmp
+*.bak
