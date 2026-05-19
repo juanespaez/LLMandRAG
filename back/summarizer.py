@@ -1,5 +1,5 @@
 from back.ChatClient import ChatClient
-from prompts.prompts import SUMMARIZER_SYSTEM_PROMPT
+from prompts.SUMMARIZER_SYSTEM_PROMPT import SUMMARIZER_SYSTEM_PROMPT
 
 class Summarizer:
     def __init__(self, client: ChatClient):

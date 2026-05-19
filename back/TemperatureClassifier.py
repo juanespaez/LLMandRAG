@@ -1,6 +1,6 @@
 import json
 from back.ChatClient import ChatClient
-from prompts.prompts import TEMPERATURE_CLASSIFIER_SYSTEM_PROMPT
+from prompts.TEMPERATURE_CLASSIFIER_SYSTEM_PROMPT import TEMPERATURE_CLASSIFIER_SYSTEM_PROMPT
 
 class TemperatureClassifier:
 

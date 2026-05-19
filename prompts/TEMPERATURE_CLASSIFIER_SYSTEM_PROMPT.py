@@ -1,11 +1,3 @@
-DEFAULT_SYSTEM_PROMPT = "You are a helpful assistant."
-
-SUMMARIZER_SYSTEM_PROMPT = (
-    "You are an expert at creating concise, high-ROI summaries. "
-    "Capture all key facts, decisions, and context so someone reading "
-    "only the summary can continue the conversation seamlessly."
-)
-
 TEMPERATURE_CLASSIFIER_SYSTEM_PROMPT = (
     "You are a request classifier. Analyze the user's message and decide "
     "the optimal temperature for an LLM response."
