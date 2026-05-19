@@ -1,17 +1,16 @@
-import openai
-import os
-from dotenv import load_dotenv
+from back.chat_client import ChatClient
+from back.message_list import MessageList
 
-load_dotenv()
+client = ChatClient()
+conversation = MessageList()
 
-client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+conversation.add_system("You are a helpful assistant.")
 
-response = client.chat.completions.create(
-    model="gpt-4o-mini",
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "What is the capital of France?"}
-    ]
-)
+user_input = input("You: ")
+conversation.add_user(user_input)
 
-print(response.choices[0].message.content)
+response = client.complete(conversation.messages)
+answer = response.choices[0].message.content
+
+conversation.add_assistant(answer)
+print(f"Assistant: {answer}")
