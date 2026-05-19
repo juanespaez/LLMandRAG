@@ -1,4 +1,4 @@
-from back.chat_client import ChatClient
+from back.ChatClient import ChatClient
 from prompts.prompts import SUMMARIZER_SYSTEM_PROMPT
 
 class Summarizer:
