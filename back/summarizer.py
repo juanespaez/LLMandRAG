@@ -1,4 +1,5 @@
 from back.chat_client import ChatClient
+from prompts.prompts import SUMMARIZER_SYSTEM_PROMPT
 
 class Summarizer:
     def __init__(self, client: ChatClient):
@@ -9,11 +10,7 @@ class Summarizer:
 
     def summarize(self, message_history):
         prompt = [
-            {"role": "system", "content": (
-                "You are an expert at creating concise, high-ROI summaries. "
-                "Capture all key facts, decisions, and context so someone reading "
-                "only the summary can continue the conversation seamlessly."
-            )},
+            {"role": "system", "content": SUMMARIZER_SYSTEM_PROMPT},
             {"role": "user", "content": f"Summarize this conversation:{self.format(message_history)}"}
         ]
         answer = self.client.complete(prompt, temperature=0.2)
