@@ -1,7 +1,7 @@
-from Summarizer import Summarizer
-from MessageList import MessageList
+from back.Summarizer import Summarizer
+from back.MessageList import MessageList
 from prompts.DEFAULT_SYSTEM_PROMPT import DEFAULT_SYSTEM_PROMPT
-from strings.HELP_TEXT import HELP_TEXT
+from back.strings.HELP_TEXT import HELP_TEXT
 
 # Maximum context window sizes (in tokens) per model, as published by OpenAI.
 # Update here if OpenAI changes limits: https://platform.openai.com/docs/models
