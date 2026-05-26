@@ -1,14 +1,14 @@
 from back.ChatClient import ChatClient
 from back.MessageList import MessageList
-from back.Summarizer import Summarizer
+from back.Commander import Commander
 from prompts.DEFAULT_SYSTEM_PROMPT import DEFAULT_SYSTEM_PROMPT
-from back.strings.HELP_TEXT import HELP_TEXT
 
 client = ChatClient()
+commander = Commander(client)
 conversation = MessageList()
-summarizer = Summarizer(client)
 
 conversation.add_system(DEFAULT_SYSTEM_PROMPT)
+last_response = None
 
 while True:
     user_input = input("You: ")
@@ -17,22 +17,20 @@ while True:
         break
 
     elif user_input.lower() == "/compact":
-        summary = summarizer.summarize(conversation.messages)
-        conversation = MessageList()
-        conversation.add_system(DEFAULT_SYSTEM_PROMPT)
-        conversation.add_system(f"Conversation so far:\n{summary}")
-        print("[System]: Conversation compacted.")
+        conversation = commander.compact(conversation.messages)
 
     elif user_input.lower() == "/memory":
-        total = sum(len(m["content"]) for m in conversation.messages)
-        print(f"[System]: ~{total} characters in context across {len(conversation.messages)} messages.")
+        if last_response:
+            commander.memory(last_response.usage, model=client.model)
+        else:
+            print("[System]: No messages sent yet.")
 
     elif user_input.lower() == "/help":
-        print(HELP_TEXT)
+        commander.help()
 
     else:
         conversation.add_user(user_input)
-        response = client.complete(conversation.messages)
-        answer = response.choices[0].message.content
+        last_response = client.complete(conversation.messages)
+        answer = last_response.choices[0].message.content
         conversation.add_assistant(answer)
         print(f"Assistant: {answer}")
